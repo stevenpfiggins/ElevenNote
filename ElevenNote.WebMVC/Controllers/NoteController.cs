@@ -61,5 +61,20 @@ namespace ElevenNote.WebMVC.Controllers
 
             return View(model);
         }
+
+        //GET:
+        public ActionResult Edit(int id)
+        {
+            var service = CreateNoteService();
+            var detail = service.GetNoteById(id);
+            var model =
+                new NoteEdit
+                {
+                    NoteId = detail.NoteId,
+                    Title = detail.Title,
+                    Content = detail.Content
+                };
+            return View(model);
+        }
     }
 }
