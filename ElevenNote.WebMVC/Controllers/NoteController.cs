@@ -18,7 +18,6 @@ namespace ElevenNote.WebMVC.Controllers
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new NoteService(userId);
             var model = service.GetNotes();
-
             return View(model);
         }
 
@@ -37,13 +36,9 @@ namespace ElevenNote.WebMVC.Controllers
             {
                 return View(model);
             }
-
             var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new NoteService(userId);
-
             service.CreateNote(model);
-
-
             return RedirectToAction("Index");
         }
     }
